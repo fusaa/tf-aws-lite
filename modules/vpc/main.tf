@@ -17,6 +17,7 @@ resource "aws_internet_gateway" "this" {
   tags   = merge(var.tags, { Name = "${var.name}-igw" })
 }
 
+# public subnet intentionally auto-assigns public IPs; that is what makes it public
 #trivy:ignore:AVD-AWS-0164
 resource "aws_subnet" "public" {
   count                   = length(var.public_subnets)
