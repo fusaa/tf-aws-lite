@@ -27,6 +27,11 @@ jobs:
             terraform -chdir="$dir" init -backend=false
             terraform -chdir="$dir" validate
           done
+      - name: validate example
+        run: |
+          terraform -chdir=examples/vpc-simple init -backend=false
+          terraform -chdir=examples/vpc-simple validate
+
 
   lint:
     runs-on: ubuntu-latest
